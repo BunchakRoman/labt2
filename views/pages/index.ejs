@@ -1,0 +1,40 @@
+<html>
+  <head>
+  </head>
+  <body>
+    <div>
+        <% for (task of tasks) { %>
+            <% if (task.done === 'true') { %>
+              <h4><s><%= task.name %></s></h4>
+            <% } else { %>
+              <h4><%= task.name %></h4>
+            <% } %>
+
+            <form method="POST" action="/edit/<%= task._id %>">
+              <input type="submit" value="Виконано">
+            </form>
+            <form method="POST" action="/delete/<%= task._id %>">
+              <input type="submit" value="Видалити">
+            </form>
+            <form method="POST" action="/show/<%= task._id %>">
+              <input type="submit" value="Деталі">
+            </form>
+            <hr>
+        <% } %>
+
+  </div>
+
+  <div>
+    <form method="POST" action="/new">
+      <label for="name">Назва: </label>
+      <input type="text" name="name" id="name"/>
+      <br>
+      <label>
+        Деталі:
+        <br><textarea rows="5" cols="25" name="details"> </textarea><br>
+      </label>
+      <input type="submit" value="Створити нову задачу"/>
+    </form>
+  </div>
+  </body>
+</html
